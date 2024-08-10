@@ -14,12 +14,14 @@ jest.mock("firebase/firestore", () => ({
   collection: jest.fn(),
   onSnapshot: jest.fn(),
   serverTimestamp: jest.fn(),
+  orderBy: jest.fn(),
+  query: jest.fn(),
 }));
 
 jest.mock("services/firestore", () => jest.fn());
 
 describe("useMessages", () => {
-  beforeEach(() => {
+  afterEach(() => {
     jest.clearAllMocks();
   });
 

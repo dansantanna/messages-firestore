@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Component renders all components inside the Container 1`] = `
+<div
+  class="c-PSqgi"
+>
+  <div>
+    Mocked Logo
+  </div>
+  <div>
+    Mocked Form
+  </div>
+  <div>
+    Mocked Messages
+  </div>
+</div>
+`;

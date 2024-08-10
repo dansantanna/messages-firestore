@@ -2,6 +2,8 @@ import {
   addDoc,
   collection,
   onSnapshot,
+  orderBy,
+  query,
   serverTimestamp,
 } from "firebase/firestore";
 import { useCallback, useEffect, useState } from "react";
@@ -12,8 +14,11 @@ const useMessages = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
 
   useEffect(() => {
-    const db = getFirestoreDb();
-    const unsubscribe = onSnapshot(collection(db, "messages"), ({ docs }) => {
+    const queryFirestore = query(
+      collection(getFirestoreDb(), "messages"),
+      orderBy("createdAt", "desc")
+    );
+    const unsubscribe = onSnapshot(queryFirestore, ({ docs }) => {
       const updatedMessages = docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
