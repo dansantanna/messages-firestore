@@ -3,6 +3,10 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import EnvironmentPlugin from "vite-plugin-environment";
 
+// Clear specific environment variables
+delete process.env["CommonProgramFiles(x86)"];
+delete process.env["ProgramFiles(x86)"];
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), EnvironmentPlugin("all")],
